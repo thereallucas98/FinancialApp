@@ -1,24 +1,22 @@
 import React, { useState, useContext } from 'react';
 import { Platform, ActivityIndicator } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+
 import { AuthContext } from '../../contexts/auth';
 
 import {
-  AreaInput, Background, Container, Input,
-  Link, LinkText, Logo,
-  SubmitButton, SubmitText
-} from './styles';
+  Background, Container, Logo, AreaInput, Input, SubmitButton,
+  SubmitText
+} from '../SignIn/styles';
 
 export default function SignIn() {
-  const navigation = useNavigation();
-
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { signIn, loadingAuth } = useContext(AuthContext);
+  const { signUp, loadingAuth } = useContext(AuthContext);
 
-  function handleLogin() {
-    signIn(email, password);
+  function handleSignUp() {
+    signUp(email, password, nome);
   }
 
   return (
@@ -27,7 +25,16 @@ export default function SignIn() {
         behavior={Platform.OS === 'ios' ? 'padding' : ''}
         enabled
       >
-        <Logo source={require('../../assets/Logo.png')} />
+
+        <AreaInput>
+          <Input
+            placeholder="Nome"
+            autoCorrect={false}
+            autoCapitalize="none"
+            value={nome}
+            onChangeText={(text) => setNome(text)}
+          />
+        </AreaInput>
 
         <AreaInput>
           <Input
@@ -38,9 +45,10 @@ export default function SignIn() {
             onChangeText={(text) => setEmail(text)}
           />
         </AreaInput>
+
         <AreaInput>
           <Input
-            placeholder="senha"
+            placeholder="Senha"
             autoCorrect={false}
             autoCapitalize="none"
             value={password}
@@ -48,18 +56,17 @@ export default function SignIn() {
             secureTextEntry={true}
           />
         </AreaInput>
-        <SubmitButton onPress={handleLogin}>
+
+        <SubmitButton onPress={handleSignUp}>
           {
             loadingAuth ? (
               <ActivityIndicator size={20} color="#fff" />
             ) : (
-                <SubmitText>Acessar</SubmitText>
+                <SubmitText>Cadastrar</SubmitText>
               )
           }
         </SubmitButton>
-        <Link onPress={() => navigation.navigate('SignUp')}>
-          <LinkText>Criar uma conta</LinkText>
-        </Link>
+
       </Container>
     </Background>
   );

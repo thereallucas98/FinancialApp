@@ -3,18 +3,17 @@ import 'firebase/auth';
 import 'firebase/database';
 
 let firebaseConfig = {
-  apiKey: "AIzaSyCSJ-I5oSOtZELnrCJ2eYW7mYNG2Dr1WEo",
-  authDomain: "meuapp-31f1e.firebaseapp.com",
-  databaseURL: "https://meuapp-31f1e.firebaseio.com",
-  projectId: "meuapp-31f1e",
-  storageBucket: "meuapp-31f1e.appspot.com",
-  messagingSenderId: "19079705560",
-  appId: "1:19079705560:web:f5513e17a026f9cc89b8ad",
-  measurementId: "G-G3J7KKDT21"
+  apiKey: "AIzaSyDc6DQj7HKblVys1Gd6TrNZ1-dsAW6Gxdw",
+  authDomain: "financialapp-4b5c2.firebaseapp.com",
+  databaseURL: "https://financialapp-4b5c2-default-rtdb.firebaseio.com",
+  projectId: "financialapp-4b5c2",
+  storageBucket: "financialapp-4b5c2.appspot.com",
+  messagingSenderId: "511882391315",
+  appId: "1:511882391315:web:a31f34d1e41ce6ffc374e6",
+  measurementId: "G-SD35Q0ZT1D"
 };
-
-
-if (!firebase.app.length){
+// Initialize Firebase
+if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
